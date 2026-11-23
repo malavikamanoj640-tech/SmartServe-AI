@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#1769AA">
+<title>SmartServe AI — Restaurant Control Tower</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">🍽️</div><div><strong>SmartServe</strong><span>AI Kitchen OS</span></div></div>
+  <div class="sidebar-status"><i></i> AI Engine Active</div>
+  <nav class="side-nav tabs">
+    <div class="nav-group"><label>MAIN</label>
+      <button class="tab-btn active" data-tab="forecast"><b>📈</b>Demand Forecast</button>
+      <button class="tab-btn" data-tab="week"><b>📅</b>7-Day Forecast</button>
+    </div>
+    <div class="nav-group"><label>PLANNING</label>
+      <button class="tab-btn" data-tab="whatif"><b>🧪</b>What-If Lab</button>
+      <button class="tab-btn" data-tab="planner"><b>🍽️</b>Production Planner</button>
+      <button class="tab-btn" data-tab="optimize"><b>♻️</b>AI Optimize</button>
+    </div>
+    <div class="nav-group"><label>OPERATIONS</label>
+      <button class="tab-btn control-tab" data-tab="control"><b>🎛️</b>Control Tower <em>AI</em></button>
+      <button class="tab-btn" data-tab="insights"><b>🤖</b>AI Insights</button>
+      <button class="tab-btn" data-tab="context"><b>🌦️</b>Context Intelligence</button>
+      <button class="tab-btn" data-tab="analytics"><b>📊</b>Analytics</button>
+      <button class="tab-btn" data-tab="daily"><b>🗓️</b>Daily Analysis <em>NEW</em></button>
+      <button class="tab-btn" data-tab="intelligence"><b>🧠</b>Intelligence Hub <em>AI</em></button>
+    </div>
+    <div class="nav-group"><label>BUSINESS INTELLIGENCE</label>
+      <button class="tab-btn" data-tab="waste"><b>♻️</b>Waste & Sustainability</button>
+      <button class="tab-btn" data-tab="inventory"><b>📦</b>Ingredient Inventory</button>
+      <button class="tab-btn" data-tab="suppliers"><b>🚚</b>Suppliers & Purchase</button>
+      <button class="tab-btn" data-tab="profit"><b>💹</b>Revenue & Profit</button>
+    </div>
+    <div class="nav-group"><label>AI PLATFORM</label>
+      <button class="tab-btn" data-tab="assistant"><b>💬</b>Ollama Assistant</button>
+      <button class="tab-btn" data-tab="monitor"><b>🧪</b>Model Monitoring</button>
+    </div>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="mini-card"><span>⚡</span><div><strong>Smart Kitchen</strong><small>Predict · Prepare · Prevent Waste</small></div></div>
+    <a href="{{ url_for('landing_page') }}">← Back to Home</a>
+  </div>
+</aside>
+
+<div class="main-area">
+<header class="topbar">
+  <div class="top-left"><button class="mobile-menu">☰</button><div><small>RESTAURANT INTELLIGENCE PLATFORM</small><h1>Kitchen Control Center</h1></div></div>
+  <div class="top-right"><span class="date-chip">📅 <b id="topbar-date">Today</b></span><span class="top-status" id="statusPill"><i></i> AI Engine Active</span><span class="avatar">SS</span></div>
+</header>
+
+<main class="dashboard-main">
+<section class="hero">
+  <div class="hero-copy"><div class="kicker"><i></i> LIVE KITCHEN INTELLIGENCE</div>
+    <h2>Turn demand into <span>smarter production.</span></h2>
+    <p>SmartServe AI connects demand forecasting, production planning, inventory awareness and operational context so your kitchen can prepare the right quantity at the right time.</p>
+    <div class="hero-actions"><button class="hero-primary" data-tab-jump="forecast">⚡ Open Forecast <span>→</span></button><button class="hero-secondary" data-tab-jump="control">View Control Tower</button></div>
+    <div class="hero-proof"><span>✓ Demand forecast</span><span>✓ Inventory aware</span><span>✓ Waste focused</span></div>
+  </div>
+  <div class="hero-visual" aria-hidden="true"><div class="hero-glow"></div><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ai-core"><b>AI</b><small>READY</small></div><i class="float f1">🍅</i><i class="float f2">🥕</i><i class="float f3">🍚</i><i class="float f4">🧅</i><i class="float f5">🥬</i><i class="float f6">🍞</i><i class="float f7">🍗</i><i class="float f8">🥔</i></div>
+</section>
+
+<section class="overview-grid" id="overview-grid">
+  <div class="overview-card blue"><span class="ov-icon">📈</span><div><small>Total Demand</small><strong id="ov-demand">—</strong><em>historical units</em></div><label>Demand</label></div>
+  <div class="overview-card green"><span class="ov-icon">🍽️</span><div><small>Prepared</small><strong id="ov-prepared">—</strong><em>historical units</em></div><label>Kitchen</label></div>
+  <div class="overview-card amber"><span class="ov-icon">♻️</span><div><small>Estimated Waste</small><strong id="ov-waste">—</strong><em id="ov-waste-rate">— waste rate</em></div><label>Monitor</label></div>
+  <div class="overview-card purple"><span class="ov-icon">🤖</span><div><small>AI Status</small><strong id="ov-status">Active</strong><em>forecast engine</em></div><label>LIVE</label></div>
+</section>
+
+<section class="quick-command"><div><span>⚡</span><div><b>Quick start</b><small>Choose a menu item and generate a forecast to get an actionable production recommendation.</small></div></div><button class="quick-btn" data-tab-jump="forecast">Open Forecast →</button></section>
+
+<!-- FORECAST -->
+<div class="tab-panel active" id="tab-forecast"><div class="section-head"><div><small>DEMAND FORECAST</small><h2>Daily production forecast</h2><p>Generate an item-level demand estimate and translate it into a practical kitchen quantity.</p></div><b>📈 ML Forecast</b></div>
+<div class="panel"><div class="panel-title"><span>📋</span><div><h3>Forecast Inputs</h3><p>Set the operating conditions for the selected menu item.</p></div></div><div class="form-grid">
+<div class="field"><label>Date</label><input type="date" id="f-date"></div><div class="field"><label>Food Item</label><select id="f-item">{% for item in food_items %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></div><div class="field"><label>Weather</label><select id="f-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><div class="field"><label>Event</label><select id="f-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="checkbox-field"><input type="checkbox" id="f-holiday"><label for="f-holiday">Holiday</label></div><button class="btn-action" id="f-generate">Generate Forecast →</button>
+</div></div>
+<div class="kpi-grid" id="f-results" style="display:none"><div class="kpi-card blue"><small>Predicted Demand</small><strong id="f-demand">-</strong><em>units</em></div><div class="kpi-card green"><small>Recommended Production</small><strong id="f-production">-</strong><em>units</em></div><div class="kpi-card amber"><small>Expected Surplus</small><strong id="f-surplus">-</strong><em>units</em></div><div class="kpi-card purple"><small>Waste Risk</small><strong id="f-risk">-</strong><em>decision signal</em></div></div>
+<div class="decision-grid" id="f-decision" style="display:none"><div class="insight-card"><small>AI DECISION SUMMARY</small><p id="f-summary">-</p></div><div class="insight-card"><small>DEMAND DRIVERS</small><div id="f-drivers" class="driver-list"></div></div><div class="insight-card"><small>PRODUCTION BALANCE</small><div id="f-balance" class="balance-row"></div></div></div></div>
+
+<!-- WEEK -->
+<div class="tab-panel" id="tab-week"><div class="section-head"><div><small>WEEKLY OUTLOOK</small><h2>7-day demand forecast</h2><p>See the upcoming demand and production requirement for a selected menu item.</p></div><b>📅 7 Days</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Start Date</label><input type="date" id="w-date"></div><div class="field"><label>Food Item</label><select id="w-item">{% for item in food_items %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></div><div class="field"><label>Weather</label><select id="w-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><button class="btn-action" id="w-generate">Generate 7-Day Forecast →</button></div></div><div class="panel"><div class="table-head"><div><h3>Weekly production outlook</h3><p>Demand, recommended production, surplus and waste risk.</p></div></div><div class="table-scroll" id="w-table-wrap" style="display:none"><table><thead><tr><th>Date</th><th>Day</th><th>Demand</th><th>Production</th><th>Surplus</th><th>Risk</th></tr></thead><tbody id="w-table-body"></tbody></table></div><div class="empty-state" id="w-empty">📅 <strong>7-day forecast ready</strong><p>Generate a forecast to help the kitchen plan the coming week.</p></div></div></div>
+
+<!-- WHAT IF -->
+<div class="tab-panel" id="tab-whatif"><div class="section-head"><div><small>SCENARIO LAB</small><h2>What-If simulation</h2><p>Test demand changes and operational delays before they affect the kitchen.</p></div><b>🧪 Scenario AI</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Baseline Date</label><input type="date" id="wi-date"></div><div class="field"><label>Food Item</label><select id="wi-item">{% for item in food_items %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></div><div class="field"><label>Weather</label><select id="wi-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><div class="field"><label>Event</label><select id="wi-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="field"><label>Demand Change (%)</label><input type="number" id="wi-change" value="10" step="5"></div><div class="field"><label>Operational Delay (hours)</label><input type="number" id="wi-delay" value="0" step="0.5" min="0"></div><button class="btn-action" id="wi-run">Run Scenario →</button></div></div><div class="scenario-flow" id="wi-results" style="display:none"><div class="scenario-box"><small>Baseline Demand</small><strong id="wi-baseline">-</strong></div><i>→</i><div class="scenario-box"><small>Scenario Demand</small><strong id="wi-scenario">-</strong></div><i>→</i><div class="scenario-box"><small>Recommended Production</small><strong id="wi-production">-</strong></div><i>→</i><div class="scenario-box"><small>Expected Surplus</small><strong id="wi-surplus">-</strong></div><i>→</i><div class="scenario-box"><small>Waste Risk</small><strong id="wi-risk">-</strong></div></div><div class="hint" id="wi-hint" style="display:none"></div></div>
+
+<!-- ANALYTICS -->
+<div class="tab-panel" id="tab-analytics">
+  <div class="section-head"><div><small>PERFORMANCE INTELLIGENCE</small><h2>Kitchen analytics</h2><p>Visualize demand, preparation, sales and waste patterns across the full historical dataset.</p></div><b>📊 Analytics</b></div>
+  <div class="panel"><div class="table-head"><div><h3>Historical performance snapshot</h3><p>Aggregate metrics calculated directly from the demo historical dataset.</p></div></div><div class="kpi-grid" id="a-kpis"></div></div>
+  <div class="chart-grid">
+    <div class="panel chart-panel wide"><div class="table-head"><div><h3>12-week demand vs production</h3><p>See whether kitchen preparation is tracking historical demand.</p></div></div><div class="chart-wrap"><canvas id="a-weekly-chart"></canvas></div></div>
+    <div class="panel chart-panel"><div class="table-head"><div><h3>Waste by menu item</h3><p>Historical estimated waste units.</p></div></div><div class="chart-wrap"><canvas id="a-waste-chart"></canvas></div></div>
+    <div class="panel chart-panel"><div class="table-head"><div><h3>Demand vs production</h3><p>Total historical units by menu item.</p></div></div><div class="chart-wrap"><canvas id="a-dvp-chart"></canvas></div></div>
+  </div>
+  <div class="panel"><div class="table-head"><div><h3>Weekly demand trend</h3><p>Detailed weekly values for the last 12 weeks.</p></div></div><div class="table-scroll"><table><thead><tr><th>Week</th><th>Demand</th><th>Prepared</th><th>Production Gap</th></tr></thead><tbody id="a-weekly-table"></tbody></table></div></div>
+  <div class="panel" id="a-model-metrics-panel" style="display:none"><div class="table-head"><div><h3>Model performance</h3><p>Evaluation metrics saved with the current demand model.</p></div></div><div class="kpi-grid" id="a-model-metrics"></div></div>
+</div>
+
+<!-- DAILY ANALYSIS -->
+<div class="tab-panel" id="tab-daily">
+  <div class="section-head"><div><small>DAY-BY-DAY OPERATIONS</small><h2>Daily kitchen analysis</h2><p>Pick any historical date to inspect demand, sales, preparation, waste and item-level performance.</p></div><b>🗓️ Daily View</b></div>
+  <div class="panel"><div class="form-grid"><div class="field"><label>Analysis Date</label><input type="date" id="d-date" value="{{ daily_default_date }}"></div><button class="btn-action" id="d-run">Analyze Day →</button></div><div class="daily-context" id="d-context"></div></div>
+  <div class="kpi-grid" id="d-kpis"></div>
+  <div class="chart-grid daily-charts">
+    <div class="panel chart-panel wide"><div class="table-head"><div><h3>14-day operating trend</h3><p>Demand, prepared and sold units around the selected date.</p></div></div><div class="chart-wrap"><canvas id="d-trend-chart"></canvas></div></div>
+    <div class="panel chart-panel"><div class="table-head"><div><h3>Today's menu demand</h3><p>Demand by item for the selected date.</p></div></div><div class="chart-wrap tall"><canvas id="d-item-chart"></canvas></div></div>
+    <div class="panel chart-panel"><div class="table-head"><div><h3>Waste share</h3><p>Estimated waste contribution by menu item.</p></div></div><div class="chart-wrap tall"><canvas id="d-waste-chart"></canvas></div></div>
+  </div>
+  <div class="panel"><div class="table-head"><div><h3>Daily item scorecard</h3><p>Demand, preparation, sales and waste for each menu item.</p></div></div><div class="table-scroll"><table><thead><tr><th>Menu Item</th><th>Demand</th><th>Prepared</th><th>Sold</th><th>Waste</th><th>Waste Rate</th><th>Gap</th></tr></thead><tbody id="d-table-body"></tbody></table></div></div>
+  <div class="daily-callouts" id="d-callouts"></div>
+</div>
+
+<!-- PLANNER -->
+<div class="tab-panel" id="tab-planner"><div class="section-head"><div><small>AI KITCHEN PLANNER</small><h2>Build the full production plan</h2><p>Forecast every menu item together and prepare a practical kitchen production sheet.</p></div><b>⚡ Multi-item planning</b></div><div class="panel planner-hero"><span>🍽️</span><div><small>PRODUCTION WORKFLOW</small><h3>Forecast → Plan → Prepare</h3><p>Combine menu-level demand with a lean production buffer and review the total kitchen load.</p></div></div><div class="panel"><div class="form-grid"><div class="field"><label>Planning Date</label><input type="date" id="p-date"></div><div class="field"><label>Weather</label><select id="p-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><div class="field"><label>Event</label><select id="p-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="checkbox-field"><input type="checkbox" id="p-holiday"><label for="p-holiday">Holiday</label></div><button class="btn-action" id="p-generate">Build Production Plan →</button><button class="btn-secondary" id="p-export" disabled>⬇ Export CSV</button></div><div class="planner-summary" id="p-summary" style="display:none"><div><small>Total Demand</small><strong id="p-demand">0</strong><em>units</em></div><div><small>Recommended Production</small><strong id="p-production">0</strong><em>units</em></div><div><small>Expected Surplus</small><strong id="p-surplus">0</strong><em>units</em></div><div><small>High-Risk Items</small><strong id="p-risk">0</strong><em>items</em></div></div></div><div class="panel" id="p-table-wrap" style="display:none"><div class="table-head"><h3>Menu production plan</h3></div><div class="table-scroll"><table><thead><tr><th>Menu Item</th><th>Demand</th><th>Prepare</th><th>Surplus</th><th>Risk</th><th>Forecast Range</th></tr></thead><tbody id="p-table-body"></tbody></table></div></div><div class="empty-state" id="p-empty">🍳 <strong>Production plan ready to build</strong><p>Build a complete plan to see all menu items and their recommended preparation quantities.</p></div></div>
+
+<!-- OPTIMIZE -->
+<div class="tab-panel" id="tab-optimize"><div class="section-head"><div><small>AI DECISION ENGINE</small><h2>Optimize production with inventory awareness</h2><p>Balance demand, available stock, surplus and potential stockout risk.</p></div><b>♻️ Waste + Stockout</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Planning Date</label><input type="date" id="o-date"></div><div class="field"><label>Weather</label><select id="o-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><div class="field"><label>Event</label><select id="o-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="checkbox-field"><input type="checkbox" id="o-holiday"><label for="o-holiday">Holiday</label></div><button class="btn-action" id="o-run">Run AI Optimization →</button></div></div><div class="optimizer-kpis" id="o-kpis" style="display:none"><div><small>Estimated Waste Avoided</small><strong id="o-waste-saved">0</strong><em>units</em></div><div><small>Estimated Savings</small><strong id="o-savings">₹0</strong><em>prototype estimate</em></div><div><small>Replenishment Alerts</small><strong id="o-stockout">0</strong><em>high inventory risk</em></div><div><small>Revenue at Risk</small><strong id="o-revenue">₹0</strong><em>if shortfall occurs</em></div></div><div class="panel" id="o-recommendation" style="display:none"><div class="panel-title"><span>🧠</span><div><h3>AI Kitchen Recommendation</h3><p>Inventory-aware operational guidance.</p></div></div><div class="recommendation"><b>🧠</b><div id="o-message">—</div></div><div class="optimizer-note" id="o-note"></div></div><div class="panel" id="o-table-panel" style="display:none"><div class="table-head"><h3>Inventory-aware production plan</h3></div><div class="table-scroll"><table><thead><tr><th>Item</th><th>Demand</th><th>Stock</th><th>Produce</th><th>Coverage</th><th>Stockout</th><th>Waste Avoided</th></tr></thead><tbody id="o-table-body"></tbody></table></div></div></div>
+
+<!-- INTELLIGENCE HUB -->
+<div class="tab-panel" id="tab-intelligence">
+  <div class="section-head"><div><small>EXPLAINABLE DEMAND INTELLIGENCE</small><h2>Day × Weather × Context Lab</h2><p>See how weekday patterns, weather, events and holidays change the forecast — then convert the result into a production decision.</p></div><b>🧠 Decision Science</b></div>
+  <div class="panel intelligence-controls">
+    <div class="form-grid">
+      <div class="field"><label>Date</label><input type="date" id="i-date"></div>
+      <div class="field"><label>Food Item</label><select id="i-item">{% for item in food_items %}<option value="{{ item }}">{{ item }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Weather</label><select id="i-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div>
+      <div class="field"><label>Event</label><select id="i-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div>
+      <div class="checkbox-field"><input type="checkbox" id="i-holiday"><label for="i-holiday">Holiday</label></div>
+      <button class="btn-action" id="i-run">Analyze Intelligence →</button>
+    </div>
+  </div>
+
+  <div class="intelligence-hero" id="i-hero">
+    <div class="intelligence-score"><span>CONTEXT IMPACT</span><strong id="i-impact">—</strong><small>vs normal baseline</small></div>
+    <div class="intelligence-summary"><span class="intel-badge">AI EXPLANATION</span><h3 id="i-summary-title">Choose conditions to analyze demand.</h3><p id="i-summary">The system will compare the selected operating context with a normal baseline and show what changed.</p></div>
+    <div class="intelligence-plan"><small>RECOMMENDED PRODUCTION</small><strong id="i-production">—</strong><span id="i-risk">Risk —</span></div>
+  </div>
+
+  <div class="intel-grid-2">
+    <div class="panel"><div class="table-head"><div><h3>📅 Demand by Day of Week</h3><p>Same item, selected context — useful for identifying peak days.</p></div></div><div id="i-day-chart" class="bar-chart"></div></div>
+    <div class="panel"><div class="table-head"><div><h3>🌦️ Weather Sensitivity</h3><p>Compare the selected date under different weather scenarios.</p></div></div><div id="i-weather-chart" class="bar-chart"></div></div>
+  </div>
+
+  <div class="intel-grid-2">
+    <div class="panel"><div class="table-head"><div><h3>🔍 Why did demand change?</h3><p>Scenario decomposition for the selected item.</p></div></div><div id="i-drivers" class="driver-impact-list"></div></div>
+    <div class="panel"><div class="table-head"><div><h3>📈 Next 7 Days</h3><p>Temporal demand movement under the selected context.</p></div></div><div id="i-seven" class="mini-timeline"></div></div>
+  </div>
+
+  <div class="panel"><div class="table-head"><div><h3>🔥 Day × Weather Matrix</h3><p>Expected demand across all weekday/weather combinations. This is a scenario-planning view.</p></div></div><div id="i-matrix" class="matrix-wrap"></div></div>
+
+  <div class="intel-grid-2">
+    <div class="panel"><div class="table-head"><div><h3>📚 Historical Weekday Evidence</h3><p>Average observed demand from the demonstration dataset.</p></div></div><div id="i-history-day" class="bar-chart compact"></div></div>
+    <div class="panel"><div class="table-head"><div><h3>🗓️ Seasonal Pattern</h3><p>Average historical demand by month.</p></div></div><div id="i-season" class="bar-chart compact"></div></div>
+  </div>
+
+  <div class="panel model-panel"><div class="table-head"><div><h3>🤖 Model & Evaluation</h3><p>Show measurable evidence in the MCA project viva rather than only displaying predictions.</p></div></div><div id="i-model" class="model-metrics"></div><div class="prototype-disclaimer" id="i-note"></div></div>
+</div>
+
+<!-- CONTROL TOWER -->
+<div class="tab-panel" id="tab-control"><div class="section-head"><div><small>END-TO-END OPERATIONS</small><h2>Kitchen Control Tower</h2><p>Connect the forecast with ingredient requirements, inventory and procurement action.</p></div><b>🎛️ Operations</b></div><div class="panel control-hero"><div><small>FORECAST → INGREDIENTS → STOCK → ACTION</small><h3>From demand forecast to procurement action.</h3><p>Build a 7-day operating view using menu demand, recipe-level ingredient requirements, current inventory and procurement alerts.</p></div><strong>Forecast → Ingredients → Stock → Action</strong></div><div class="panel"><div class="panel-title"><span>🎛️</span><div><h3>Build Kitchen Action Plan</h3><p>Generate a practical operational plan for the next seven days.</p></div></div><div class="form-grid"><div class="field"><label>Start Date</label><input type="date" id="k-date"></div><div class="field"><label>Location</label><input type="text" id="k-city" value="Pune" placeholder="e.g. Pune"></div><div class="field"><label>Event</label><select id="k-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="checkbox-field"><input type="checkbox" id="k-holiday"><label for="k-holiday">Holiday</label></div><button class="btn-action" id="k-build">Build Control Tower →</button></div></div><div id="k-results" style="display:none"><div class="control-kpis"><div><small>7-Day Production</small><strong id="k-production">0</strong><em>menu portions</em></div><div><small>Procurement Alerts</small><strong id="k-alerts">0</strong><em>ingredients below requirement</em></div><div><small>Order Estimate</small><strong id="k-cost">₹0</strong><em>demo procurement cost</em></div><div><small>Weather Source</small><strong id="k-source">—</strong><em>planning context</em></div></div><div class="panel"><div class="table-head"><h3>🚨 Procurement Action Center</h3></div><div id="k-actions" class="control-actions"></div></div><div class="panel"><div class="table-head"><h3>📦 Ingredient Requirement vs Inventory</h3></div><div class="table-scroll"><table><thead><tr><th>Ingredient</th><th>7-Day Required</th><th>Available</th><th>Shortage</th><th>Suggested Order</th><th>Status</th></tr></thead><tbody id="k-ingredient-body"></tbody></table></div></div><div class="panel"><div class="today-head"><div><small>TODAY'S KITCHEN ACTION</small><strong id="k-today-date">—</strong><span id="k-today-weather">—</span></div><b>AI Production Guidance</b></div><div class="control-menu-grid" id="k-today-menu"></div></div><div class="panel"><div class="table-head"><h3>📅 7-Day Production Timeline</h3></div><div class="control-day-grid" id="k-day-grid"></div><div class="optimizer-note" id="k-note"></div></div></div></div>
+
+<!-- INSIGHTS -->
+<div class="tab-panel" id="tab-insights"><div class="section-head"><div><small>AI OPERATIONS BRIEF</small><h2>Kitchen intelligence</h2><p>Turn available operational data into concise actions for the team.</p></div><b>🤖 AI Insights</b></div><div class="panel"><div class="insight-banner" id="insight-summary">Loading operational intelligence...</div></div><div class="panel"><div class="table-head"><h3>Smart Alerts</h3></div><div id="alerts-list" class="alerts-list"></div></div><div class="panel"><div class="table-head"><h3>Menu Intelligence</h3></div><div class="table-scroll"><table><thead><tr><th>Item</th><th>Historical Demand</th><th>Estimated Waste</th><th>Trend</th></tr></thead><tbody id="intel-body"></tbody></table></div></div></div>
+
+<!-- CONTEXT -->
+<div class="tab-panel" id="tab-context"><div class="section-head"><div><small>REAL-TIME CONTEXT INTELLIGENCE</small><h2>Understand why demand may move</h2><p>Use weather, events and holidays as context around the ML demand forecast.</p></div><b>🌦️ Context → Action</b></div><div class="panel context-hero"><span>🌦️</span><div><small>CONTEXT INTELLIGENCE</small><h3>Weather + events + holidays</h3><p>Compare the ML forecast with a normal operating baseline and convert context changes into practical kitchen actions.</p></div></div><div class="panel"><div class="form-grid"><div class="field"><label>Date</label><input type="date" id="c-date"></div><div class="field"><label>Location</label><input type="text" id="c-city" value="Pune" placeholder="e.g. Pune"></div><div class="field"><label>Weather</label><select id="c-weather">{% for w in weather_options %}<option value="{{ w }}">{{ w }}</option>{% endfor %}</select></div><div class="field"><label>Event</label><select id="c-event">{% for e in event_options %}<option value="{{ e }}">{{ e }}</option>{% endfor %}</select></div><div class="checkbox-field"><input type="checkbox" id="c-holiday"><label for="c-holiday">Holiday</label></div><button class="btn-secondary" id="c-live-weather">🌦️ Fetch Live Weather</button><button class="btn-action" id="c-run">Analyze Context →</button></div></div><div id="c-live-card" class="live-weather-card" style="display:none"><div class="weather-main"><span id="c-weather-icon">🌤️</span><div><strong id="c-live-condition">—</strong><small id="c-live-location">—</small></div></div><div><small>Max</small><b id="c-live-max">—</b></div><div><small>Rain chance</small><b id="c-live-rain">—</b></div><div><small>Rainfall</small><b id="c-live-mm">—</b></div><p id="c-live-status">Live weather connected</p></div><div id="c-results" style="display:none"><div class="context-kpis"><div><small>Largest Demand Increase</small><strong id="c-up">—</strong><em id="c-up-meta">—</em></div><div><small>Largest Demand Decrease</small><strong id="c-down">—</strong><em id="c-down-meta">—</em></div><div><small>Action Signals</small><strong id="c-actions">0</strong><em>increase / reduce / monitor</em></div><div><small>Anomaly Watch</small><strong id="c-anomalies">0</strong><em>high-deviation items</em></div></div><div class="panel"><div class="table-head"><h3>AI Action Center</h3></div><div id="c-summary" class="insight-banner"></div><div id="c-action-list" class="context-actions"></div></div><div class="panel"><div class="table-head"><h3>Context Impact by Menu Item</h3></div><div class="table-scroll"><table><thead><tr><th>Item</th><th>Baseline</th><th>Context Forecast</th><th>Impact</th><th>Anomaly</th><th>Action</th></tr></thead><tbody id="c-table-body"></tbody></table></div></div><div class="panel"><div class="table-head"><h3>Smart Context Alerts</h3></div><div id="c-alerts" class="alerts-list"></div><div class="optimizer-note" id="c-note"></div></div></div></div>
+
+
+<!-- WASTE & SUSTAINABILITY -->
+<div class="tab-panel" id="tab-waste"><div class="section-head"><div><small>SUSTAINABLE KITCHEN</small><h2>Waste & sustainability center</h2><p>Review historical preparation gaps and estimate the operational and cost impact of food waste.</p></div><b>♻️ Waste intelligence</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Menu item</label><select id="waste-item">{% for item in food_items %}<option>{{ item }}</option>{% endfor %}</select></div><button class="btn-action" id="waste-load">Analyze historical waste →</button></div><div id="waste-result" class="kpi-grid"></div><div id="waste-note" class="optimizer-note"></div></div></div>
+<!-- INVENTORY -->
+<div class="tab-panel" id="tab-inventory"><div class="section-head"><div><small>STOCK OPERATIONS</small><h2>Ingredient inventory center</h2><p>Maintain ingredient balances, units and cost. Changes are saved to the local application database.</p></div><b>📦 Inventory</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Ingredient</label><input id="inv-name" placeholder="e.g. Tomatoes"></div><div class="field"><label>Quantity</label><input id="inv-qty" type="number" min="0" step="0.001"></div><div class="field"><label>Unit</label><input id="inv-unit" placeholder="kg / L / pack"></div><div class="field"><label>Unit cost (₹)</label><input id="inv-cost" type="number" min="0" step="0.01"></div><button class="btn-action" id="inv-save">Save ingredient</button></div></div><div class="panel"><div class="table-scroll"><table><thead><tr><th>Ingredient</th><th>Stock</th><th>Unit</th><th>Unit cost</th><th>Stock value</th><th>Action</th></tr></thead><tbody id="inv-body"></tbody></table></div></div></div>
+<!-- SUPPLIERS -->
+<div class="tab-panel" id="tab-suppliers"><div class="section-head"><div><small>PROCUREMENT WORKSPACE</small><h2>Supplier & purchase center</h2><p>Save supplier contacts and create purchase order drafts for kitchen replenishment.</p></div><b>🚚 Procurement</b></div><div class="panel"><h3>Add supplier</h3><div class="form-grid"><div class="field"><label>Supplier name</label><input id="sup-name"></div><div class="field"><label>Contact</label><input id="sup-contact"></div><div class="field"><label>Email</label><input id="sup-email" type="email"></div><div class="field"><label>Category</label><input id="sup-category" placeholder="Vegetables, dairy..."></div><button class="btn-action" id="sup-save">Save supplier</button></div></div><div class="panel"><div class="table-scroll"><table><thead><tr><th>Supplier</th><th>Contact</th><th>Email</th><th>Category</th><th></th></tr></thead><tbody id="sup-body"></tbody></table></div></div><div class="panel"><h3>Create purchase order draft</h3><div class="form-grid"><div class="field"><label>Supplier</label><select id="po-supplier"></select></div><div class="field"><label>Ingredient</label><input id="po-item"></div><div class="field"><label>Quantity</label><input id="po-qty" type="number" min="0.001" step="0.001"></div><div class="field"><label>Unit price (₹)</label><input id="po-price" type="number" min="0" step="0.01"></div><button class="btn-action" id="po-save">Save purchase order</button></div><p class="optimizer-note">Orders are saved as drafts only. This system does not send orders to suppliers.</p></div><div class="panel"><div class="table-scroll"><table><thead><tr><th>PO</th><th>Supplier</th><th>Item</th><th>Qty</th><th>Total</th><th>Status</th></tr></thead><tbody id="po-body"></tbody></table></div></div></div>
+<!-- PROFIT -->
+<div class="tab-panel" id="tab-profit"><div class="section-head"><div><small>FINANCIAL INTELLIGENCE</small><h2>Revenue & profit analytics</h2><p>Record daily menu sales and costs to calculate revenue, cost and gross profit.</p></div><b>💹 Finance</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Menu item</label><select id="fin-item">{% for item in food_items %}<option>{{ item }}</option>{% endfor %}</select></div><div class="field"><label>Units sold</label><input id="fin-qty" type="number" min="0" value="0"></div><div class="field"><label>Selling price / unit (₹)</label><input id="fin-price" type="number" min="0" step="0.01"></div><div class="field"><label>Cost / unit (₹)</label><input id="fin-cost" type="number" min="0" step="0.01"></div><div class="field"><label>Sales date</label><input id="fin-date" type="date"></div><button class="btn-action" id="fin-save">Save sales record</button></div></div><div class="kpi-grid" id="fin-kpis"></div><div class="panel"><div class="table-scroll"><table><thead><tr><th>Date</th><th>Item</th><th>Units</th><th>Revenue</th><th>Cost</th><th>Gross profit</th></tr></thead><tbody id="fin-body"></tbody></table></div></div></div>
+<!-- ASSISTANT -->
+<div class="tab-panel" id="tab-assistant"><div class="section-head"><div><small>LOCAL LLM SUPPORT</small><h2>SmartServe AI assistant</h2><p>Ask questions about restaurant operations, forecasts, inventory and how to use this system.</p></div><b>💬 Ollama</b></div><div class="panel"><div class="form-grid"><div class="field"><label>Ollama model</label><input id="ollama-model" value="{{ ollama_model }}" placeholder="qwen2.5:0.5b"></div><button class="btn-secondary" id="ollama-status">Check Ollama connection</button></div><div id="ollama-status-text" class="optimizer-note">Ollama is optional. Start Ollama locally and pull a model before chatting.</div><div class="field"><label>Your question</label><textarea id="assistant-question" rows="3" placeholder="How can I reduce food waste for tomorrow?"></textarea></div><button class="btn-action" id="assistant-send">Ask SmartServe AI →</button><div id="assistant-answer" class="assistant-answer" aria-live="polite"></div></div></div>
+<!-- MONITOR -->
+<div class="tab-panel" id="tab-monitor"><div class="section-head"><div><small>MODEL GOVERNANCE</small><h2>AI model monitoring</h2><p>Inspect model availability, dataset status and saved evaluation metrics. No metrics are fabricated.</p></div><b>🧪 Model health</b></div><div class="panel"><button class="btn-action" id="monitor-refresh">Refresh model status →</button><div id="monitor-status" class="kpi-grid"></div><div id="monitor-metrics" class="kpi-grid"></div><div id="monitor-note" class="optimizer-note"></div></div></div>
+
+</main>
+<footer><span>SmartServe AI</span><span>Demand &amp; Production Control Tower</span><span>Prototype decision-support system</span></footer>
+</div></div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const d=document.getElementById("topbar-date"); if(d)d.textContent=new Date().toLocaleDateString(undefined,{day:"2-digit",month:"short",year:"numeric"});
+  const m=document.querySelector(".mobile-menu"),s=document.querySelector(".sidebar"); if(m&&s)m.onclick=()=>s.classList.toggle("mobile-open");
+  document.querySelectorAll(".tab-btn").forEach(b=>b.addEventListener("click",()=>{if(innerWidth<=900&&s)s.classList.remove("mobile-open")}));
+});
+</script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/intelligence.js') }}"></script>
+<script src="{{ url_for('static', filename='js/extensions.js') }}"></script>
+</body>
+</html>

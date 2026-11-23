@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1769AA" />
+  <meta name="description" content="SmartServe AI — AI-powered food demand forecasting and production optimization." />
+  <title>SmartServe AI | Predict. Prepare. Prevent Waste.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}?v=2" />
+</head>
+<body>
+
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a class="brand" href="{{ url_for('landing_page') }}" aria-label="SmartServe AI home">
+      <span class="brand-mark">
+        <span class="brand-dot"></span>
+        <span class="brand-dot"></span>
+        <span class="brand-dot"></span>
+      </span>
+      <span>
+        <strong>SmartServe</strong>
+        <small>AI</small>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#solutions">Solutions</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#control-tower">Control Tower</a>
+    </div>
+
+    <a class="nav-cta" href="{{ url_for('dashboard_page') }}">
+      Open Control Tower
+      <span>→</span>
+    </a>
+  </nav>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="live-dot"></span>
+          AI-POWERED FOOD OPERATIONS
+        </div>
+
+        <h1>
+          Predict demand.
+          <span>Prepare smarter.</span>
+          Prevent waste.
+        </h1>
+
+        <p class="hero-description">
+          SmartServe AI transforms historical demand and operational context into
+          actionable production recommendations — helping kitchens prepare with
+          greater confidence before food is produced.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="{{ url_for('dashboard_page') }}">
+            Launch Control Tower
+            <span>→</span>
+          </a>
+          <a class="btn-secondary" href="#how-it-works">
+            See how it works
+            <span>↓</span>
+          </a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-icon">📈</span>
+            <div>
+              <strong>Demand-aware</strong>
+              <small>Forecasting</small>
+            </div>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-icon">🍳</span>
+            <div>
+              <strong>Action-ready</strong>
+              <small>Production planning</small>
+            </div>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-icon">♻️</span>
+            <div>
+              <strong>Waste-aware</strong>
+              <small>Risk estimation</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero dashboard visual -->
+      <div class="hero-visual" aria-label="SmartServe AI dashboard preview">
+        <div class="visual-orbit orbit-a"></div>
+        <div class="visual-orbit orbit-b"></div>
+
+        <div class="dashboard-preview">
+          <div class="preview-topbar">
+            <div class="preview-brand">
+              <span class="mini-logo">🍽️</span>
+              <div>
+                <strong>SmartServe AI</strong>
+                <small>Kitchen Control Tower</small>
+              </div>
+            </div>
+            <span class="preview-status">
+              <i></i> AI Active
+            </span>
+          </div>
+
+          <div class="preview-heading">
+            <div>
+              <small>TODAY'S DEMAND OUTLOOK</small>
+              <strong>Production Intelligence</strong>
+            </div>
+            <span class="preview-date">Today</span>
+          </div>
+
+          <div class="preview-metrics">
+            <div class="preview-card">
+              <span>Expected Demand</span>
+              <strong>684</strong>
+              <small>units</small>
+              <div class="mini-chart">
+                <i style="height:32%"></i><i style="height:52%"></i><i style="height:44%"></i>
+                <i style="height:68%"></i><i style="height:58%"></i><i style="height:82%"></i>
+                <i style="height:74%"></i>
+              </div>
+            </div>
+
+            <div class="preview-card">
+              <span>Recommended</span>
+              <strong>712</strong>
+              <small>production units</small>
+              <div class="progress-line"><i></i></div>
+              <em>Balanced plan</em>
+            </div>
+          </div>
+
+          <div class="preview-table">
+            <div class="table-title">
+              <strong>Today's Menu</strong>
+              <span>Forecast</span>
+            </div>
+
+            <div class="menu-row">
+              <span class="food-thumb">🍛</span>
+              <div class="menu-name">
+                <strong>Biryani</strong>
+                <small>High demand</small>
+              </div>
+              <span class="menu-value">142</span>
+              <b class="risk low">LOW</b>
+            </div>
+
+            <div class="menu-row">
+              <span class="food-thumb">🥘</span>
+              <div class="menu-name">
+                <strong>Veg Thali</strong>
+                <small>Stable</small>
+              </div>
+              <span class="menu-value">106</span>
+              <b class="risk low">LOW</b>
+            </div>
+
+            <div class="menu-row">
+              <span class="food-thumb">🥪</span>
+              <div class="menu-name">
+                <strong>Sandwich</strong>
+                <small>Watch demand</small>
+              </div>
+              <span class="menu-value">72</span>
+              <b class="risk medium">MEDIUM</b>
+            </div>
+          </div>
+
+          <div class="preview-footer">
+            <span>♻️ Waste-aware planning</span>
+            <span>☁ Context intelligence</span>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-demand">
+          <span>📈</span>
+          <div>
+            <strong>Forecast ready</strong>
+            <small>Demand model active</small>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-waste">
+          <span>♻️</span>
+          <div>
+            <strong>Waste risk</strong>
+            <small>Being monitored</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Value strip -->
+    <section class="value-strip" aria-label="SmartServe capabilities">
+      <div class="value-item">
+        <span>01</span>
+        <div>
+          <strong>Forecast</strong>
+          <small>Estimate item-level demand</small>
+        </div>
+      </div>
+      <div class="value-item">
+        <span>02</span>
+        <div>
+          <strong>Optimize</strong>
+          <small>Translate demand into production</small>
+        </div>
+      </div>
+      <div class="value-item">
+        <span>03</span>
+        <div>
+          <strong>Simulate</strong>
+          <small>Test operational what-if scenarios</small>
+        </div>
+      </div>
+      <div class="value-item">
+        <span>04</span>
+        <div>
+          <strong>Act</strong>
+          <small>Turn insights into kitchen actions</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section class="section" id="solutions">
+      <div class="section-heading">
+        <div>
+          <div class="section-kicker">WHAT SMARTSERVE SOLVES</div>
+          <h2>From forecast to <span>kitchen action.</span></h2>
+        </div>
+        <p>
+          One operational workflow connects demand prediction, production planning,
+          risk awareness and scenario testing.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card featured">
+          <div class="feature-number">01</div>
+          <div class="feature-icon blue">📈</div>
+          <h3>Demand Forecasting</h3>
+          <p>
+            Predict expected demand for individual food items using the trained
+            Random Forest forecasting model and contextual inputs.
+          </p>
+          <div class="feature-link">Item-level demand intelligence <span>→</span></div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">02</div>
+          <div class="feature-icon green">🍳</div>
+          <h3>Production Optimization</h3>
+          <p>
+            Convert forecasted demand into practical production quantities with
+            a kitchen-oriented planning workflow.
+          </p>
+          <div class="feature-link">Plan before production <span>→</span></div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">03</div>
+          <div class="feature-icon amber">⚠️</div>
+          <h3>Waste Risk</h3>
+          <p>
+            Estimate overproduction risk so operators can identify quantities
+            that may require attention before preparation begins.
+          </p>
+          <div class="feature-link">Monitor avoidable risk <span>→</span></div>
+        </article>
+
+        <article class="feature-card">
+          <div class="feature-number">04</div>
+          <div class="feature-icon purple">🧪</div>
+          <h3>What-If Lab</h3>
+          <p>
+            Stress-test a production plan by changing demand and operating
+            conditions before committing kitchen resources.
+          </p>
+          <div class="feature-link">Explore scenarios <span>→</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section workflow-section" id="how-it-works">
+      <div class="section-heading centered">
+        <div class="section-kicker">HOW IT WORKS</div>
+        <h2>A simple path from <span>data to decision.</span></h2>
+        <p>
+          SmartServe connects the forecasting layer with practical production
+          decisions through a single operational workflow.
+        </p>
+      </div>
+
+      <div class="workflow">
+        <div class="workflow-line"></div>
+
+        <div class="workflow-step">
+          <div class="step-icon">🗂️</div>
+          <span>01</span>
+          <h3>Historical Data</h3>
+          <p>Use historical item demand and operating context as forecasting inputs.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-icon">🤖</div>
+          <span>02</span>
+          <h3>AI Forecast</h3>
+          <p>Estimate expected demand for the selected item and date.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-icon">🍳</div>
+          <span>03</span>
+          <h3>Production Plan</h3>
+          <p>Translate expected demand into a recommended production quantity.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-icon">♻️</div>
+          <span>04</span>
+          <h3>Risk Check</h3>
+          <p>Review waste and operational risk indicators before action.</p>
+        </div>
+
+        <div class="workflow-step">
+          <div class="step-icon">🎛️</div>
+          <span>05</span>
+          <h3>Kitchen Action</h3>
+          <p>Use the Control Tower to organize the next operational decision.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Control Tower -->
+    <section class="control-section" id="control-tower">
+      <div class="control-copy">
+        <div class="section-kicker">THE SMARTSERVE CONTROL TOWER</div>
+        <h2>See the kitchen before the kitchen <span>acts.</span></h2>
+        <p>
+          Bring forecasts, production planning, risk indicators, ingredient
+          requirements and operational context together in one dashboard.
+        </p>
+
+        <ul class="control-list">
+          <li><span>✓</span> Forecast individual menu items</li>
+          <li><span>✓</span> Build a 7-day demand outlook</li>
+          <li><span>✓</span> Compare demand with production</li>
+          <li><span>✓</span> Monitor ingredient requirements</li>
+          <li><span>✓</span> Explore what-if scenarios</li>
+        </ul>
+
+        <a class="btn-primary" href="{{ url_for('dashboard_page') }}">
+          Enter Kitchen Control Tower
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="control-visual">
+        <div class="control-panel">
+          <div class="control-panel-head">
+            <div>
+              <span class="panel-kicker">KITCHEN CONTROL</span>
+              <strong>Operational snapshot</strong>
+            </div>
+            <span class="panel-live"><i></i> LIVE</span>
+          </div>
+
+          <div class="control-kpis">
+            <div>
+              <small>DEMAND</small>
+              <strong>684</strong>
+              <span>units</span>
+            </div>
+            <div>
+              <small>PRODUCTION</small>
+              <strong>712</strong>
+              <span>units</span>
+            </div>
+            <div>
+              <small>WASTE RISK</small>
+              <strong>Low</strong>
+              <span>monitored</span>
+            </div>
+          </div>
+
+          <div class="control-alert">
+            <span>💡</span>
+            <div>
+              <strong>Kitchen recommendation</strong>
+              <p>Review high-demand items and align preparation with today's forecast.</p>
+            </div>
+            <span class="alert-arrow">→</span>
+          </div>
+
+          <div class="control-bars">
+            <div class="bar-row">
+              <span>Biryani</span>
+              <div><i style="width:86%"></i></div>
+              <b>142</b>
+            </div>
+            <div class="bar-row">
+              <span>Veg Thali</span>
+              <div><i style="width:68%"></i></div>
+              <b>106</b>
+            </div>
+            <div class="bar-row">
+              <span>Masala Dosa</span>
+              <div><i style="width:62%"></i></div>
+              <b>104</b>
+            </div>
+            <div class="bar-row">
+              <span>Paneer Rice</span>
+              <div><i style="width:48%"></i></div>
+              <b>77</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="cta-orb orb-left"></div>
+      <div class="cta-orb orb-right"></div>
+
+      <div class="cta-content">
+        <div class="section-kicker">READY FOR THE NEXT SERVICE?</div>
+        <h2>Turn demand signals into <span>smarter kitchen decisions.</span></h2>
+        <p>
+          Open SmartServe AI and explore forecasts, production planning,
+          optimization and operational scenarios from one control tower.
+        </p>
+        <a class="btn-light" href="{{ url_for('dashboard_page') }}">
+          Launch SmartServe AI
+          <span>→</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <span class="footer-logo">🍽️</span>
+      <div>
+        <strong>SmartServe AI</strong>
+        <small>Predict. Prepare. Prevent Waste.</small>
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <span>AI-assisted food demand &amp; production intelligence</span>
+      <a href="{{ url_for('dashboard_page') }}">Control Tower →</a>
+    </div>
+  </footer>
+
+</body>
+</html>

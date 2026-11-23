@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SmartServe AI - Predict. Prepare. Prevent Waste.</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/landing_style.css') }}" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="brand"><span class="dot"></span> 🍽️ SmartServe AI</div>
+    <a class="nav-cta" href="{{ url_for('dashboard_page') }}">Open Control Tower</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Predict demand.<br />Prepare smarter.<br />Waste less.</h1>
+    <p>
+      SmartServe AI is an AI-powered decision-support system that converts demand
+      forecasts into production recommendations, estimates waste risk, and lets
+      food-service operators test demand and operational scenarios before preparing food.
+    </p>
+    <a class="btn-primary" href="{{ url_for('dashboard_page') }}">Launch Control Tower →</a>
+  </header>
+
+  <section class="section">
+    <h2>What SmartServe AI Solves</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">📈</div>
+        <h3>Demand Forecasting</h3>
+        <p>Predicts expected demand for each food item using a trained Random Forest model.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🍳</div>
+        <h3>Production Optimization</h3>
+        <p>Converts the raw demand prediction into a recommended production quantity.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⚠️</div>
+        <h3>Waste Risk</h3>
+        <p>Flags LOW / MEDIUM / HIGH overproduction risk before food is even cooked.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🧪</div>
+        <h3>What-If Simulation</h3>
+        <p>Tests demand spikes, drops, and kitchen delays to stress-test a plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>How It Works</h2>
+    <div class="flow">
+      <div class="flow-step">Historical Data</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">AI Forecast</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Production Recommendation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Waste Risk</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">Kitchen Action</div>
+    </div>
+  </section>
+
+  <section class="section" style="text-align:center; padding-bottom: 80px;">
+    <a class="btn-primary" href="{{ url_for('dashboard_page') }}">Open the Control Tower</a>
+  </section>
+
+</body>
+</html>
